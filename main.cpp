@@ -2,12 +2,54 @@
 //  DO NOT MODIFY NEXT LINE
 //------------------------------
 #include "catch.hpp"
+#include <iostream>
 //------------------------------
 
 // Put the assignment code here
 
 class Quaternion {
+private:
+
+  double a;
+  double b;
+  double c;
+  double d;
+
+public:
+  Quaternion(double a1, double b1, double c1, double d1){
+    a = a1;
+    b = b1;
+    c = c1;
+    d = d1;
+  }
+  
+
+  bool operator==(const Quaternion& y)const{
+    if(a == y.a && b == y.b && c == y.c && d == y.d)
+      return true;
+    else
+    return false;
+    
+  }
+
+  Quaternion operator+(const Quaternion& y)const{
+   double x = a + y.a;
+   double w = b + y.b;
+   double h = c + y.c;
+   double z = d + y.d;
+   Quaternion e(x,w,h,z);
+return e;
+  }
+
+  Quaternion operator-(const Quaternion& y)const{
+    return Quaternion(a - y.a, b - y.b, c - y.c, d - y.d);
+  }
+
+  Quaternion operator*(const double& y)const{
+    return Quaternion(a * y, b * y, c * y, d * y);
+  }
 };
+
 
 //------------------------------
 //   DO NOT MODIFY TEST CASES
